@@ -1,0 +1,16 @@
+/.github              export-ignore
+/.laminas-ci          export-ignore
+/bin                  export-ignore
+/config               export-ignore
+/data                 export-ignore
+/docker               export-ignore
+/public               export-ignore
+/src/Identity/config  export-ignore
+/tests                export-ignore
+/.env.dist            export-ignore
+/.gitignore           export-ignore
+/constants.php        export-ignore
+/*.yml                export-ignore
+/*.xml                export-ignore
+/*.neon               export-ignore
+/.*                   export-ignore

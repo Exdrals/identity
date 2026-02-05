@@ -33,7 +33,7 @@ $aggregator = new ConfigAggregator([
         return [];
     },
     // Default App module config
-    \Exdrals\Shared\ConfigProvider::class,
+    \Exdrals\Core\ConfigProvider::class,
     \Exdrals\Identity\ConfigProvider::class,
 
     // Load application config in a pre-defined order in such a way that local settings

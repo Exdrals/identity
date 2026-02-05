@@ -160,16 +160,13 @@ readonly class ConfigProvider
                 AccountAccessAuthHydratorInterface::class => Infrastructure\Hydrator\AccountAccessAuthHydrator::class,
                 AccountActivationHydratorInterface::class => Infrastructure\Hydrator\AccountActivationHydrator::class,
                 AccountHydratorInterface::class => Infrastructure\Hydrator\AccountHydrator::class,
-                TokenHydratorInterface::class => \Exdrals\Token\Infrastructure\Hydrator\TokenHydrator::class,
 
                 AccountRepositoryInterface::class => Infrastructure\Persistence\Repository\AccountRepository::class,
                 AccountActivationRepositoryInterface::class => Infrastructure\Persistence\Repository\AccountActivationRepository::class,
                 AccountAccessAuthRepositoryInterface::class => Infrastructure\Persistence\Repository\AccountAccessAuthRepository::class,
-                TokenRepositoryInterface::class => \Exdrals\Token\Infrastructure\Persistence\Repository\TokenRepository::class,
                 AccountStoreInterface::class => Infrastructure\Persistence\Table\AccountTable::class,
                 AccountAccessAuthStoreInterface::class => Infrastructure\Persistence\Table\AccountAccessAuthTable::class,
                 AccountActivationStoreInterface::class => Infrastructure\Persistence\Table\AccountActivationTable::class,
-                TokenStoreInterface::class => \Exdrals\Token\Infrastructure\Persistence\Table\TokenTable::class,
             ],
             'invokables' => [
             ],
@@ -177,7 +174,6 @@ readonly class ConfigProvider
                 Infrastructure\Hydrator\AccountAccessAuthHydrator::class => InvokableFactory::class,
                 Infrastructure\Hydrator\AccountActivationHydrator::class => ConfigAbstractFactory::class,
                 Infrastructure\Hydrator\AccountHydrator::class => ConfigAbstractFactory::class,
-                \Exdrals\Token\Infrastructure\Hydrator\TokenHydrator::class => ConfigAbstractFactory::class,
                 Middleware\Account\Authentication\AuthenticationConditionsMiddleware::class => InvokableFactory::class,
                 Middleware\Account\Authentication\AuthenticationValidationMiddleware::class => ConfigAbstractFactory::class,
                 Middleware\Account\Validation\ActivationInputValidatorMiddleware::class => ConfigAbstractFactory::class,
@@ -196,7 +192,6 @@ readonly class ConfigProvider
                 Infrastructure\Persistence\Repository\AccountAccessAuthRepository::class => ConfigAbstractFactory::class,
                 Infrastructure\Persistence\Repository\AccountActivationRepository::class => ConfigAbstractFactory::class,
                 Infrastructure\Persistence\Repository\AccountRepository::class => ConfigAbstractFactory::class,
-                \Exdrals\Token\Infrastructure\Persistence\Repository\TokenRepository::class => ConfigAbstractFactory::class,
                 Infrastructure\Service\Account\AccountService::class => ConfigAbstractFactory::class,
                 Infrastructure\Service\Authentication\AuthenticationService::class => InvokableFactory::class,
                 Infrastructure\Service\ClientIdentification\ClientIdentificationService::class => InvokableFactory::class,
@@ -208,7 +203,6 @@ readonly class ConfigProvider
                 Infrastructure\Persistence\Table\AccountAccessAuthTable::class => ConfigAbstractFactory::class,
                 Infrastructure\Persistence\Table\AccountActivationTable::class => ConfigAbstractFactory::class,
                 Infrastructure\Persistence\Table\AccountTable::class => ConfigAbstractFactory::class,
-                \Exdrals\Token\Infrastructure\Persistence\Table\TokenTable::class => ConfigAbstractFactory::class,
 
                 EmailInput::class => InvokableFactory::class,
                 PasswordInput::class => InvokableFactory::class,
@@ -240,9 +234,6 @@ readonly class ConfigProvider
                 UuidFactoryInterface::class,
             ],
             Infrastructure\Hydrator\AccountHydrator::class => [
-                UuidFactoryInterface::class,
-            ],
-            \Exdrals\Token\Infrastructure\Hydrator\TokenHydrator::class => [
                 UuidFactoryInterface::class,
             ],
             Middleware\Account\Authentication\AuthenticationValidationMiddleware::class => [
@@ -298,9 +289,6 @@ readonly class ConfigProvider
             Infrastructure\Persistence\Repository\AccountRepository::class => [
                 AccountStoreInterface::class,
             ],
-            \Exdrals\Token\Infrastructure\Persistence\Repository\TokenRepository::class => [
-                TokenStoreInterface::class,
-            ],
             Infrastructure\Service\Account\AccountService::class => [
                 AccountRepositoryInterface::class,
                 AccountAccessAuthRepositoryInterface::class,
@@ -319,10 +307,6 @@ readonly class ConfigProvider
             Infrastructure\Persistence\Table\AccountTable::class => [
                 Query::class,
                 AccountHydratorInterface::class,
-            ],
-            \Exdrals\Token\Infrastructure\Persistence\Table\TokenTable::class => [
-                Query::class,
-                TokenHydratorInterface::class,
             ],
             Infrastructure\Validator\AccountActivationValidator::class => [
                 AccountNameInput::class,
