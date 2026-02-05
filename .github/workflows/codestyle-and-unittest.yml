@@ -30,14 +30,6 @@ jobs:
       - name: Run PHP Codesniffer
         run: composer run-script phpcs
 
-      - name: Notify Failure
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with:
-          severity: error
-          details: Static Analysis (Lint/Stan/CS) failed.
-          webhookUrl: ${{ secrets.WEBHOOK_DISCORD_URL }}
-
   # 2. Job: Tests (Unit & Functional)
   # Dieser Job benötigt die MariaDB Service-Container
   tests:
@@ -74,37 +66,3 @@ jobs:
         env:
           APP_ENV: action
           DB_HOST: 127.0.0.1
-
-      - name: Notify Failure
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with:
-          severity: error
-          details: Integration Tests failed.
-          webhookUrl: ${{ secrets.WEBHOOK_DISCORD_URL }}
-
-  # 3. Job: Abschluss-Benachrichtigung
-  final-status:
-    name: Final Status Message
-    needs: [ static-analysis, tests ]
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Info Success
-        if: ${{ needs.static-analysis.result == 'success' && needs.tests.result == 'success' }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with:
-          severity: info
-          details: Checks successfully executed on API.
-          webhookUrl: ${{ secrets.WEBHOOK_DISCORD_URL }}
-
-      - name: Check Info Failure
-        if: ${{ needs.static-analysis.result != 'success' || needs.tests.result != 'success' }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with:
-          severity: error
-          details: >-
-            ${{ format('❌ Incorrect checks during the API check. [View Logs](https://github.com/{0}/actions/runs/{1})', 
-            github.repository, 
-            github.run_id) }}
-          webhookUrl: ${{ secrets.WEBHOOK_DISCORD_URL }}
