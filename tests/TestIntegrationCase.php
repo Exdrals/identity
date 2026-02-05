@@ -51,7 +51,7 @@ abstract class TestIntegrationCase extends BaseTestCase
 
     public function createGetRequest(string $path): ServerRequest
     {
-        return (new ServerRequestFactory())
+        return new ServerRequestFactory()
             ->createServerRequest('GET', new Uri($path));
     }
 
@@ -69,7 +69,7 @@ abstract class TestIntegrationCase extends BaseTestCase
 
     public function createJsonPatchRequest(string $path, array $data): ServerRequest
     {
-        $request = (new ServerRequestFactory())
+        $request = new ServerRequestFactory()
             ->createServerRequest('PATCH', new Uri($path))
             ->withHeader('Content-Type', 'application/json');
 

@@ -163,16 +163,10 @@ migrate_db() {
     $DOCKER_COMPOSE exec $CONTAINER_PHP composer run doctrine migrations:migrate -- --no-interaction
 }
 
-generate_openapi() {
-    log "Generating OpenAPI documentation..."
-    $DOCKER_COMPOSE exec $CONTAINER_PHP composer run openapi
-}
-
 build_stack() {
     up
     install_deps "$1"
     migrate_db
-    generate_openapi
     show_info
 }
 
@@ -193,9 +187,6 @@ case $1 in
     ;;
   "setup")
     build_stack
-    ;;
-  "openapi")
-    generate_openapi
     ;;
   "info")
     show_info
@@ -297,16 +288,15 @@ case $1 in
     esac
     ;;
   *)
-    echo -e "Usage: $0 {${GREEN}start${NC}|${GREEN}stop${NC}|${GREEN}down${NC}|${GREEN}setup${NC}|${GREEN}reset${NC}|${GREEN}openapi${NC}|${GREEN}info${NC}|${GREEN}clean${NC}|${GREEN}composer${NC}|${GREEN}php${NC}|${GREEN}indocker${NC}}"
+    echo -e "Usage: $0 {${GREEN}start${NC}|${GREEN}stop${NC}|${GREEN}down${NC}|${GREEN}setup${NC}|${GREEN}reset${NC}|${GREEN}info${NC}|${GREEN}clean${NC}|${GREEN}composer${NC}|${GREEN}php${NC}|${GREEN}indocker${NC}}"
     echo ""
     echo "Infrastructure Commands:"
     echo -e "  ${GREEN}start${NC}           - Start containers (checks for initialization first)"
     echo -e "  ${GREEN}stop${NC}            - Pause containers (preserves state)"
     echo -e "  ${GREEN}down${NC}            - Stop and remove containers and networks"
-    echo -e "  ${GREEN}setup${NC}           - Full initial installation (Start, Install, Migrate, OpenAPI)"
+    echo -e "  ${GREEN}setup${NC}           - Full initial installation (Start, Install, Migrate)"
     echo -e "  ${GREEN}info${NC}            - Show connectivity info (URLs, Ports, Credentials)"
     echo -e "  ${GREEN}services${NC}        - List all available service names"
-    echo -e "  ${GREEN}openapi${NC}         - Regenerate the OpenAPI documentation"
     echo ""
     echo "Maintenance Commands:"
     echo -e "  ${GREEN}clean [...]${NC}     - Delete resources (run without args for options)"

@@ -40,8 +40,7 @@
     "php": "~8.4.0",
     "ext-json": "*",
     "ext-openssl": "*",
-    "ext-pdo": "*",
-    "exdrals/core": "^0"
+    "ext-pdo": "*"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^1.2",
@@ -59,7 +58,8 @@
     "phpunit/phpunit": "^11.5.0",
     "roave/security-advisories": "dev-master",
     "slevomat/coding-standard": "^8.15",
-    "squizlabs/php_codesniffer": "^4.0"
+    "squizlabs/php_codesniffer": "^4.0",
+    "exdrals/core": "^0"
   },
   "autoload": {
     "psr-4": {
@@ -100,7 +100,6 @@
     "doctrine": "php ./bin/migrations.php",
     "enable-codestandard": "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
     "mezzio": "laminas --ansi",
-    "openapi": "php ./vendor/bin/openapi ./src -f json -o ./public/api/docs/swagger.json",
     "phpcbf": "phpcbf --standard=phpcs.xml -p",
     "phpcs": "phpcs --standard=phpcs.xml -s -p",
     "phplint": "vendor/bin/phplint",
