@@ -1,17 +1,17 @@
 {
-  "name": "ownhackathon/hackathon-api",
-  "description": "Evaluation project for self-created hackathon",
+  "name": "exdrals/identity",
+  "description": "offers authentication for personal projects",
   "type": "project",
   "license": "BSD-3-Clause",
   "keywords": [
     "Hackathon",
     "OpenSource"
   ],
-  "homepage": "https://github.com/ownHackathon",
+  "homepage": "https://github.com/exdrals",
   "support": {
-    "docs": "https://github.com/ownHackathon",
-    "issues": "https://github.com/ownHackathon/hackathon-api/issues",
-    "source": "https://github.com/ownHackathon/hackathon-api"
+    "docs": "https://github.com/exdrals/identity",
+    "issues": "https://github.com/exdrals/identity/issues",
+    "source": "https://github.com/exdrals/identity"
   },
   "config": {
     "allow-plugins": {
