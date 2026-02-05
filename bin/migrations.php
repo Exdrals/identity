@@ -25,7 +25,9 @@ $configuration = new Configuration();
 
 $configuration->setCustomTemplate(__DIR__ . '/../config/migrations.template.tpl');
 
-$configuration->addMigrationsDirectory('Migrations', $config['migrations_paths']['Migrations']);
+foreach ($config['migrations_paths'] as $key => $path) {
+  $configuration->addMigrationsDirectory($key, $path);
+}
 if (array_key_exists('TestDataMigrations', $config['migrations_paths'])) {
     $configuration->addMigrationsDirectory('TestDataMigrations', $config['migrations_paths']['TestDataMigrations']);
 }

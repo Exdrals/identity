@@ -11,7 +11,7 @@ return [
         ],
 
         'migrations_paths' => [
-            'Migrations' => __DIR__ . '/../../database/migrations',
+            'Exdrals\\Identity\\Migrations' =>  __DIR__ . '/../../database/migrations',
         ],
 
         'all_or_nothing' => true,
