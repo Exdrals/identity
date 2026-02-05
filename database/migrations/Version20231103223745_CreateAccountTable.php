@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Migrations;
+namespace Exdrals\Identity;
 
 use Doctrine\DBAL\Schema\PrimaryKeyConstraint;
 use Doctrine\DBAL\Schema\Schema;
